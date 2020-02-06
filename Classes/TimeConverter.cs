@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using BerlinClock.Classes;
 
 namespace BerlinClock
 {
@@ -9,7 +6,17 @@ namespace BerlinClock
     {
         public string convertTime(string aTime)
         {
-            throw new NotImplementedException();
+            ITime time = new TimeString(aTime);
+
+            IBerlinClock berlinClock = new BerlinClock.Classes.BerlinClock(time);
+            
+            string result = berlinClock.getSeconds() + "\r\n"
+                + berlinClock.getHoursTimes5() + "\r\n"
+                + berlinClock.GetHoursTimes1() + "\r\n"
+                + berlinClock.getMinutesTimes5() + "\r\n"
+                + berlinClock.GetMinutsTimes1();
+
+            return result;
         }
     }
 }
